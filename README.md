@@ -1,78 +1,95 @@
-# Gatsby Theme Document
+# gatsby-tutorial
+Gatsby を GitHub Pages に表示させる
 
-Welcome to Document, a Gatsby.js theme by [Code Bushi](https://codebushi.com/gatsby-starters-and-themes/). Quickly and easily create documentation for anything using MDX or Markdown.
+## Getting Started  
 
-👀 [View the Live Demo](https://gatsby-theme-document.netlify.com/)
+### Install the Gatsby CLI  
+Gatsby CLI をシステムにインストールする。
 
-## Getting Started
+```
+npm i -g gatsby-cli
+```
 
-Using the Gatsby CLI
+### Create a new site  
+```
+gatsby new プロジェクト名
+```
 
-```bash
-gatsby new document-site https://github.com/codebushi/gatsby-theme-document-example
-cd document-site
+テーマを指定する場合は以下のコマンド（以下の例は Code Bushi のテーマを使用）。
+```
+gatsby new プロジェクト名 https://github.com/codebushi/gatsby-theme-document-example
+```
+
+
+GitHub にリポジトリを作成しておく。
+
+### Change directories into site folder
+```
+cd .\プロジェクト名
+git init 
+git config --local user.name fs5013-furi-sutao
+git config --local user.email fs5013.furi.sutao@gmail.com
+git add .
+git commit -m "first commit"
+git remote add origin https://ユーザ名:パスワード@github.com/fs5013-furi-sutao/プロジェクト名.git
+git push -u origin master
+```
+
+### Start development server
+```
 gatsby develop
 ```
 
-Your new site will be up at http://localhost:8000
+localhost:8000 のアドレスでブラウザを確認する。
+http://localhost:8000
 
-Try changing the logo by editing the file at `src/gatsby-theme-document/logo.mdx`.
+以下のファイルを編集して、ヘッダのロゴが変わることを確認する
+`src/gatsby-theme-document/logo.mdx`
 
-## Adding Content
+## コンテンツを追加する
+ドキュメントはMDXで作成されている。コンテンツは、コンテンツフォルダーでMDXファイルを作成または編集することで追加できる。
 
-Document is built with [MDX](https://mdxjs.com/). Content can be added by creating or editing the MDX files in the content folder `content/index.mdx`.
+`content/index.mdx`
 
-With MDX, you can add JSX or even React components to your markdown files. Images can also be added to any `.mdx` file, and will be automatically optimized using [gatsby-remark-images](https://www.gatsbyjs.org/packages/gatsby-remark-images/).
+MDX を使用すると、JSX または React コンポーネントをマークダウンファイルに追加できる。画像は任意の .mdx ファイルに追加することもでき、gatsby-remark-images を使用して自動的に最適化される。
 
-### Left Sidebar
+## Installing the gh-pages package
 
-The left sidebar navigation is automatically populated by the pages in the content folder. To sort the top level navigation, edit the `forcedNavOrder` option in the `gatsby-config.js` file.
+Gatsby アプリを GitHub Pages にプッシュするには、gh-pages というパッケージを使う。
 
-The logo will link to the `index.mdx` page. To make the `index.mdx` page visible in the left navigation, set `ignoreIndex` to `false`.
+gh-pages
+https://github.com/tschaub/gh-pages
 
-Sub navigation items are created by making a folder with the same name as the top level `.mdx` file. The sub navigation is ordered alphabetically.
+```
+npm install gh-pages --save-dev
+```
 
-### Right Sidebar
+## デプロイスクリプトの使用
+package.json にカスタムスクリプトを記述することで、サイトの構築が容易になり、構築したファイルの内容を GitHub Pages 用の適切なブランチに移動させることができ、そのプロセスの自動化に役立つ。
 
-The contents of the right sidebar will be automatically populated by any heading tags `h1, h2, h3, etc.` that are added to the page. They will anchor link to the corresponding heading.
+## GitHub Pages のパスへのデプロイ
+username.github.io/reponame/ のようなパスでデプロイされたサイトの場合、--prefix-paths フラグが使用される。gatsby-config.js のオプションとして/reponame パスのプレフィックスを追加する必要がある。
 
-## Theme Colors
+```gatsby-config.js
+module.exports = {
+  pathPrefix: "/reponame",
+}
+```
 
-Document is also built with [Theme UI](https://theme-ui.com). The icon in the top right of the site will cycle through the various color modes that are available.
+そして、リポジトリのコードベースにある package.json にデプロイスクリプトを追加する。
 
-To edit or add colors modes, edit the file at `src/gatsby-plugin-theme-ui/colors.js`. To learn more about color modes, check out the [Theme UI docs](https://theme-ui.com/color-modes).
-
-The contents of the MDX files are also styled with Theme UI and can be edited at `src/gatsby-plugin-theme-ui/index.js`. The styles for the heading tags are found at `src/gatsby-plugin-theme-ui/headingsjs`. Learn more about [styling MDX](https://theme-ui.com/styling-mdx) from the Theme UI docs.
-
-## Syntax Colors
-
-Document uses [@theme-ui/prism](https://theme-ui.com/prism) for syntax highlighting. Different presets can be used by editing the file at `src/gatsby-plugin-theme-ui/index.js`. The desired preset must be included at the top of the file and spread into the `pre` styles
-
-```javascript
-import dracula from '@theme-ui/prism/presets/dracula.json';
-
-styles: {
-  pre: {
-    ...dracula,
+```package.json
+{
+  "scripts": {
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   }
 }
 ```
 
-The code blocks will not change color based on the color modes. For a complete list of all available prism presets, check out the Theme UI [syntax themes](https://theme-ui.com/prism#syntax-themes).
+npm run deploy を実行すると、public フォルダのすべての内容がリポジトリの gh-pages ブランチに移動する。リポジトリの設定で、デプロイ元として gh-pages ブランチが設定されていることを確認する。
 
-## Social Media Icons
-
-The social media icons in the header can be edited in the `gatsby-config.js` file, under social. Currently, you can only add Twitter and Github links.
-
-## SEO, Site Image, and Manifest Icons
-
-Document uses React Helmet to add meta tags to the website's `<head>` tag. When adding/editing a file in the content folder, be sure to include the Title and Description in the frontmatter. These are automatically used to generate the title and description meta tags for the page.
-
-```md
----
-title: "Document by Code Bushi"
-description: "This is the meta description"
----
+```
+npm run deploy
 ```
 
-There is also an image at `src/site-image.jpg` which is used for the Open Graph image tag, as well as the Twitter card. Another image at `src/site-icon.png` is used by the [gatsby-plugin-manifest](https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/) to generate a Favicon and other device icons.
+NOTE: master や gh-pages を公開ソースとして選択するには、そのブランチがリポジトリに存在している必要がある。master や gh-pages のブランチがない場合は、ブランチを作成してからソースの設定に戻り、公開ソースを変更することができる。

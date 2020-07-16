@@ -1,81 +1,45 @@
 ---
-title: "Document by Code Bushi"
+title: "Web アプリ学習カリキュラム"
 description: "Welcome to Document, a Gatsby.js theme by Code Bushi. Quickly and easily create documentation for anything using MDX or Markdown."
 ---
 
-Welcome to Document, a Gatsby.js theme by [Code Bushi](https://codebushi.com/gatsby-starters-and-themes/). Quickly and easily create documentation for anything using MDX or Markdown.
+<span style={{ color: 'tomato' }}><strong>「一定以上のレベルで実務に貢献できる技術力」を身につけること</strong></span><span style={{ color: 'gray' }}>を目的としたカリキュラムです。ただの知識を習得するのではなく「学習して得た知識を使い、より多くの問題を解決できること」を目指します。</span>
 
-👀 [View the Live Demo](https://gatsby-theme-document.netlify.com/)
+<div style={{ display: 'flex' }}>
+<div style={{ width: '50%' }}>
+<h3>フロントエンド技術</h3>
+クライアントサイド<br />
+🧙🏿‍♂️<a href="https://www.notion.so/a1-GitHub-ebf495661c6a4d39a4717838d3085a3a"> a1. GitHub</a><br />
+🍅<a href="https://www.notion.so/a2-HTML-6ad263510547472facdd370cd77e497e"> a2. HTML</a><br />
+🐹<a href="https://www.notion.so/a3-CSS-e4409228511b42df9b7754634d3b535b"> a3. CSS</a><br />
+🦐<a href="https://www.notion.so/a4-JavaScript-a236903adbaf407a8603038d015ebe70"> a4. JavaScript</a><br />
+🐟<a href="https://www.notion.so/a5-jQuery-1f70f54bbd134103a86df146df2c3462"> a5. jQuery</a><br />
+🐕‍🦺<a href="https://www.notion.so/a6-Developer-Tools-ef183c0eaa9046e596d5a955b87fd1b5"> a6. Developer Tools</a><br />
+🦦<a href="https://www.notion.so/a7-Web-API-c5ac64a873cd4781b158efdfc83d8e72"> a7. Web API</a><br />
+</div>
+<div style={{ width: '50%' }}>
+<h2>バックエンド技術</h2>
+サーバサイド<br />
+🦒<a href="https://www.notion.so/b1-DB-9822e7511b484215af1f752605d46647"> b1. DB</a><br />
+🥦<a href="https://www.notion.so/b2-PHP-03e0709b440043b1b19626966f71d5e4"> b2. PHP</a><br />
+🏌️ <a href="https://www.notion.so/b3-Web-b984a74eb07c4f5aa977684a89785518"> b3. Web フレームワーク</a><br />
+🤼‍♂️<a href="https://www.notion.so/b4-5a3d18587c03406f8a3097dfe86c73be"> b4. 単体テスト/資料作成</a><br />
+</div>
+</div>
 
-## Getting Started
+## Web アプリ学習コースの進め方
+基本的には、「a1. GitHub」から、順番に単元を進めます。この学習カリキュラムを進める前に、必ず以下のルールを確認しておいてください。
 
-Using the Gatsby CLI
+### 受講者資格
+Java カリキュラムを修了、10 クラス以上を用いた Java のコンソールアプリを作成する技術や知識が身についていること（事前に基本情報技術者試験を合格しているとより学習しやすいです）。
 
-```bash
-gatsby new document-site https://github.com/codebushi/gatsby-theme-document-example.git
-cd document-site
-gatsby develop
-```
+### カリュキュラムで不足している情報について
+このカリュキュラムでは、あえて記載していない情報もあります。詳細は以下のページをご確認ください。
 
-Your new site will be up at http://localhost:8000
+🤼‍♂️ [不足している情報について](./about_missing_information)  
 
-Try changing the logo by editing the file at `src/gatsby-theme-document/logo.mdx`.
+### スケジュール報告
+以下の要領にしたがって、学習時はスケジュール作成、報告をしてください。
 
-## Adding Content
-
-Document is built with [MDX](https://mdxjs.com/). Content can be added by creating or editing the MDX files in the content folder `content/index.mdx`.
-
-With MDX, you can add JSX or even React components to your markdown files. Images can also be added to any `.mdx` file, and will be automatically optimized using [gatsby-remark-images](https://www.gatsbyjs.org/packages/gatsby-remark-images/).
-
-### Left Sidebar
-
-The left sidebar navigation is automatically populated by the pages in the content folder. To sort the top level navigation, edit the `forcedNavOrder` option in the `gatsby-config.js` file.
-
-The logo will link to the `index.mdx` page. To make the `index.mdx` page visible in the left navigation, set `ignoreIndex` to `false`.
-
-Sub navigation items are created by making a folder with the same name as the top level `.mdx` file. The sub navigation is ordered alphabetically.
-
-### Right Sidebar
-
-The contents of the right sidebar will be automatically populated by any heading tags `h1, h2, h3, etc.` that are added to the page. They will anchor link to the corresponding heading.
-
-## Theme Colors
-
-Document is also built with [Theme UI](https://theme-ui.com). The icon in the top right of the site will cycle through the various color modes that are available.
-
-To edit or add colors modes, edit the file at `src/gatsby-plugin-theme-ui/colors.js`. To learn more about color modes, check out the [Theme UI docs](https://theme-ui.com/color-modes).
-
-The contents of the MDX files are also styled with Theme UI and can be edited at `src/gatsby-plugin-theme-ui/index.js`. The styles for the heading tags are found at `src/gatsby-plugin-theme-ui/headingsjs`. Learn more about [styling MDX](https://theme-ui.com/styling-mdx) from the Theme UI docs.
-
-## Syntax Colors
-
-Document uses [@theme-ui/prism](https://theme-ui.com/prism) for syntax highlighting. Different presets can be used by editing the file at `src/gatsby-plugin-theme-ui/index.js`. The desired preset must be included at the top of the file and spread into the `pre` styles
-
-```javascript
-import dracula from '@theme-ui/prism/presets/dracula.json';
-
-styles: {
-  pre: {
-    ...dracula,
-  }
-}
-```
-
-The code blocks will not change color based on the color modes. For a complete list of all available prism presets, check out the Theme UI [syntax themes](https://theme-ui.com/prism#syntax-themes).
-
-## Social Media Icons
-
-The social media icons in the header can be edited in the `gatsby-config.js` file, under social. Currently, you can only add Twitter and Github links.
-
-## SEO, Site Image, and Manifest Icons
-
-Document uses React Helmet to add meta tags to the website's `<head>` tag. When adding/editing a file in the content folder, be sure to include the Title and Description in the frontmatter. These are automatically used to generate the title and description meta tags for the page.
-
-```md
----
-title: "Document by Code Bushi"
-description: "This is the meta description"
----
-```
-
-There is also an image at `src/site-image.jpg` which is used for the Open Graph image tag, as well as the Twitter card. Another image at `src/site-icon.png` is used by the [gatsby-plugin-manifest](https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/) to generate a Favicon and other device icons.
+### 課題提出の方法
+課題は各自の GitHub リポジトリでプルリクエストを出し、Chatwork の教育チームにレビュー依頼を出してください。詳しい提出方法は、以下のページで定めたルールに従ってください。
