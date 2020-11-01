@@ -56,7 +56,7 @@ MDX を使用すると、JSX または React コンポーネントをマーク�
 
 Gatsby アプリを GitHub Pages にプッシュするには、gh-pages というパッケージを使う。
 
-gh-pages
+gh-pages  
 https://github.com/tschaub/gh-pages
 
 ```
