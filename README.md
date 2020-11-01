@@ -1,5 +1,4 @@
-# gatsby-tutorial
-Gatsby を GitHub Pages に表示させる
+# Gatsby を GitHub Pages に表示させる方法
 
 ## Getting Started  
 
